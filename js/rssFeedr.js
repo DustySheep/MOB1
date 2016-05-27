@@ -1,3 +1,4 @@
+/*
 function($){
     $.rssFeedr = function (el, rssObj){
         this.rssObj = null;
@@ -26,3 +27,4 @@ function($){
 
 
 })(jQuery);
+*/
