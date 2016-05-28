@@ -4,39 +4,39 @@ var maxLength = 20;
 
 document.write(
     ' <div data-role="page" id="home">' +
-    '    <div data-role="header">' +
+    '    <div data-role="header" class="wow clr-light-green fadeInDown">' +
     '        <h1>MOB1</h1>' +
     '    </div>' +
     '    <div data-role="content" >' +	
     '        <ul data-role="listview" data-autodivider="true" data-inset="true" data-theme="a">' +
-    '            <li data-role="list-divider"> Choose a category ' +
+    '            <li data-role="list-divider"><span> Choose a category</span> ' +
+    '            </li>' +
+    '            <li class="ui-li-has-thumb">' +
+    '                <img src="img/LoL_icon.png" alt="LoL" class="ui-thumbnail ui-thumbnail-circular"/>' +
+    '                <a href="#list" data-rel="list" class="ui-btn waves-effect waves-button waves-effect waves-button">lol</a>' +
     '            </li>' +
     '            <li>' +
-    '                <img src="img/LoL_icon.png" alt="LoL" class="ui-li-icon"/>' +
-    '                <a href="#list" data-rel="list">lol</a>' +
-    '            </li>' +
-    '            <li>' +
-    '                <img src="img/dota_2_icon_by_benashvili-d6w0695.png" alt="dota2" class="ui-li-icon"/>' +
+    '                <img src="img/dota_2_icon_by_benashvili-d6w0695.png" alt="dota2"class="ui-thumbnail ui-thumbnail-circular"/>' +
     '                <a href="#list">dota2</a>' +
     '            </li>' +
     '            <li>' +
-    '                <img src="img/csgo-logo.png" alt="csgo" class="ui-li-icon"/>' +
+    '                <img src="img/csgo-logo.png" alt="csgo"class="ui-thumbnail ui-thumbnail-circular"/>' +
     '                <a href="#list">csgo</a>' +
     '            </li>' +
     '            <li>' +
-    '                <img src="img/hots.png" alt="hots" class="ui-li-icon"/>' +
+    '                <img src="img/hots.png" alt="hots" class="ui-thumbnail ui-thumbnail-circular"/>' +
     '                <a href="#list">hots</a>' +
     '            </li>' +
     '            <li>' +
-    '                <img src="img/hs_icon.png" alt="hs" class="ui-li-icon"/>' +
+    '                <img src="img/hs_icon.png" alt="hs" class="ui-thumbnail ui-thumbnail-circular"/>' +
     '                <a href="#list">hearthstone</a>' +
     '            </li>' +
     '            <li>' +
-    '                <img src="img/starcraft-ii-icon.png" alt="sc2" class="ui-li-icon"/>' +
+    '                <img src="img/starcraft-ii-icon.png" alt="sc2" class="ui-thumbnail ui-thumbnail-circular"/>' +
     '                <a href="#list">sc2</a>' +
     '            </li>' +
     '            <li>' +
-    '                <img src="img/3xhumed-Mega-Games-Pack-33-Call-of-Duty-Modern-Warfare-2-8.ico" alt="cod+" class="ui-li-icon"/>' +
+    '                <img src="img/3xhumed-Mega-Games-Pack-33-Call-of-Duty-Modern-Warfare-2-8.ico" alt="cod+" class="ui-thumbnail ui-thumbnail-circular"/>' +
     '                <a href="#list">cod</a>' +
     '            </li>' +
     '        </ul>' +
@@ -48,12 +48,10 @@ document.write(
 
 document.write(
     '<div data-role="page" id="list">' +
-    '  <div data-role="header" data-position="inline">' +
-    '    <a href="#home" data-role="button" data-icon="home">Home</a>' +
+    '  <div data-role="header" data-position="inline" class="wow fadeInDown">' +
+    '    <a href="#home" data-role="button" data-icon="home"></a>' +
     '    <h1><span>TheScore Esport RSS Reader </span> ' +
     '      <span style="font-size: x-small"></span></h1>' +
-    '    <a href="#" id="openButton' + i + '" data-role="button" data-icon="plus"' +
-    '      class="ui-btn-right" rel="external">Open</a>' +
     '  </div>' +
     '  <div data-role="content">' +
     '    <ul data-role="listview" data-inset="true" data-filter="true" data-theme="a" id="articleList">'
@@ -77,18 +75,18 @@ document.write(
 for(i=1; i<=maxLength; i++){
     document.write(
         '<div data-role="page" id="article' + i + '">' +
-        '  <div data-role="header" data-position="inline">' +
-        '    <a href="#home" data-role="button" data-icon="home">Home</a>' +
+        '  <div data-role="header" data-position="inline" class="wow fadeInDown">' +
+        '    <a href="#home" data-role="button" data-icon="home"></a>' +
         '    <h1 id="articleHeader' + i + '">&nbsp;</h1>' +
-        '    <a href="#" id="openButton' + i + '" data-role="button" data-icon="plus"' +
-        '      class="ui-btn-right" rel="external">Open</a>' +
+        '    <a href="#" id="openButton' + i + '" data-role="button" data-theme="a" data-icon="search"' +
+        '      class="ui-btn-right" rel="external"></a>' +
         '  </div>' +
         '  <div data-role="content">' +
         '    <div id="articleContent' + i + '" class="articleContent"></div>' +
-        '    <div data-role="controlgroup" data-type="horizontal">' +
-        '      <a href="#article' + String(i-1) + '" data-role="button" data-icon="arrow-l"' +
+        '    <div id="controlgroup" data-role="controlgroup" class="clr-light-green" data-type="horizontal">' +
+        '      <a href="#article' + String(i-1) + '" data-role="button"  class="ui-btn ui-btn-inline clr-btn-light-green waves-effect waves-button waves-effect waves-button" data-icon="arrow-l"' +
         '        data-inline="true" class="prevButton">Prev</a>' +
-        '      <a href="#article' + String(i+1) + '" data-role="button" data-icon="arrow-r"' +
+        '      <a href="#article' + String(i+1) + '" data-role="button"  class="ui-btn ui-btn-inline clr-btn-light-green waves-effect waves-button waves-effect waves-button"' +
         '        data-inline="true" class="nextButton" data-iconpos="right">Next</a>' +
         '    </div>' +
         '  </div>' +
@@ -108,17 +106,17 @@ $(function(){
 
 /* functions */
 var listEntries = function(json) {
-    
+
     if (!json.responseData.feed.entries) return false;
     $('#widgetTitle').text(json.responseData.feed.title);
     var articleLength =json.responseData.feed.entries.length;
     console.log(articleLength);
     articleLength = (articleLength > maxLength) ? maxLength : articleLength;
     for (var i = 1; i <= articleLength ; i++) {
-        
+
         /* FOR EACH ARTICLES THERE IS */
         var entry = json.responseData.feed.entries[i-1];
-        
+
         /* A LINK TO IT */          $('#link' + i).text(entry.title);
         /* A HEADER TO DISPLAY */   $('#articleHeader' + i).text(entry.title);
         /* A LINK TO IT */          $('#openButton' + i).attr('href', entry.link);
@@ -126,7 +124,7 @@ var listEntries = function(json) {
     }
 
     // NAVIGATE THROUGH ARTICLES OF THE SAME CATEGORY
-    
+
     $('#article1 .prevButton').remove();
     $('#article' + articleLength + ' .nextButton').remove();
     if (articleLength < maxLength) {
