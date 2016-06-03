@@ -11,9 +11,9 @@ document.write(
     '        <ul data-role="listview" data-autodivider="true" data-inset="true" data-theme="a">' +
     '            <li data-role="list-divider"><span> Choose a category</span> ' +
     '            </li>' +
-    '            <li class="ui-li-has-thumb">' +
+    '            <li>' +
     '                <img src="img/LoL_icon.png" alt="LoL" class="ui-thumbnail ui-thumbnail-circular"/>' +
-    '                <a href="#list" data-rel="list" class="ui-btn waves-effect waves-button waves-effect waves-button">lol</a>' +
+    '                <a href="#list" data-rel="list">lol</a>' +
     '            </li>' +
     '            <li>' +
     '                <img src="img/dota_2_icon_by_benashvili-d6w0695.png" alt="dota2"class="ui-thumbnail ui-thumbnail-circular"/>' +
@@ -94,14 +94,68 @@ for(i=1; i<=maxLength; i++){
     );
 }
 
+document.write(
+    '<div data-role="footer" data-position="fixed" class="wow fadeInUp" id="footer">' +
+    '<div class="row center-xs">'+
+    '<div class="col-xs-3">'+
+    '<div class="box">'+
+    '<a href="#" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i style="padding:2%;" class="fa fa-language" aria-hidden="true"></i>Language</a>'+
+    '</div>'+
+    '</div>'+
+    '<div class="col-xs-3">'+
+    '<div class="box zoom">'+
+    '<a href="#" id="animateZoomControl" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i style="padding:2%;" class="fa fa-search-plus" aria-hidden="true"></i>Zoom</a>'+
+    '</div>'+
+    '</div>'+
+    '<div class="col-xs-3">'+
+    '<div class="box theme">'+
+    '<a href="#bottomsheetlist" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i style="padding:2%;" class="fa fa-picture-o" aria-hidden="true"></i>Theme</a>'+
+    '</div>'+
+    '</div>'+
+    '<div class="col-xs-3">'+
+    '<div class="box">'+
+    '<a href="#" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i style="padding:2%;" class="fa fa-star" aria-hidden="true"></i>Favs</a>'+
+    '</div>'+
+    '</div>'+
+    '</div>'+
+    '</div>'
+);
+
+document.write(
+    '<div data-role="panel" id="bottomsheetblock" class="ui-bottom-sheet ui-bottom-sheet-list" data-animate="false" data-position="bottom" data-display="overlay">'+
+    '<div class="row around-xs">'+
+    '<div class="col-xs-auto">'+
+    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="zmdi zmdi-assignment zmd-2x"></i><strong>Clipboard</strong></a>'+
+    '</div>'+
+    '<div class="col-xs-auto bsheet">'+
+    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="zmdi zmdi-fire zmd-2x"></i><strong>Hot Stuff</strong></a>'+
+    '</div>'+
+    '<div class="col-xs-auto">'+
+    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="zmdi zmdi-cloud-outline-alt zmd-2x"></i><strong>Cloud</strong></a>'+
+    '</div>'+
+    '<div class="col-xs-auto">'+
+    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="zmdi zmdi-format-color-fill zmd-2x"></i><strong>Fillcolor</strong></a>'+
+    '</div>'+
+    '</div>'+
+    '</div>'
+);
+
 /* DYNAMIC URL DEPENDING ON WHERE YOU'RE CLICKING ON THE FIRST PAGE */
 /* CLICK CONTENT APPEND ON THE PROCESSED URL */
 $(function(){
     var cat ="";
     $("#home li a").click(function(){
+        // TODO --> ADD CSS WLLH
         cat = ($(this).text());
         getOnlineFeed('http://feeds.thescoreesports.com/'+cat+'.rss');
     });
+    //  ZOOM FUNCTION
+    $(".zoom").click(function(){
+       $("#zoomerElement li a, p").css("font-size", "150%");
+    });
+   
+    // THEME FUNCTION 
+
 });
 
 /* functions */
@@ -110,7 +164,7 @@ var listEntries = function(json) {
     if (!json.responseData.feed.entries) return false;
     $('#widgetTitle').text(json.responseData.feed.title);
     var articleLength =json.responseData.feed.entries.length;
-    console.log(articleLength);
+
     articleLength = (articleLength > maxLength) ? maxLength : articleLength;
     for (var i = 1; i <= articleLength ; i++) {
 
@@ -121,7 +175,13 @@ var listEntries = function(json) {
         /* A HEADER TO DISPLAY */   $('#articleHeader' + i).text(entry.title);
         /* A LINK TO IT */          $('#openButton' + i).attr('href', entry.link);
         /* THE ARTICLE'S CONTENT */ $('#articleContent' + i).append(entry.content);
+
     }
+
+    /*RANDOM ARTICLE */
+    var allArticles = json.responseData.feed.entries;
+    var rand = allArticles[Math.floor(Math.random() * allArticles.length)];
+
 
     // NAVIGATE THROUGH ARTICLES OF THE SAME CATEGORY
 
@@ -134,6 +194,8 @@ var listEntries = function(json) {
         }
     }
 };
+
+
 
 /* PROCESSSING OF THE URL */
 var getOnlineFeed = function(url) {

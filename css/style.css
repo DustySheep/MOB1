@@ -13,14 +13,33 @@ ul li a{
 }
 #controlgroup{
     position:fixed;
-    bottom:0;
-    left:0;
+    top:12%;
+    right:0;
    
 }
 .ui-content{
-   
     margin-bottom:5%;
 }
 .ui-controlgroup, fieldset.ui-controlgroup{
     margin:0;
+}
+#footer{
+    margin-top:15%;
+    position:fixed;
+    width:100%;
+    bottom:0;
+}
+.box{
+    padding:0;
+}
+.ui-btn, label.ui-btn{
+    border-style:none;
+}
+.col-xs-3{
+    padding:0;
+}
+#bottomsheetlist{
+    
+
+
 }
