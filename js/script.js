@@ -98,8 +98,14 @@ for(i=1; i<=maxLength; i++){
 document.write(
     '<div data-role="footer" data-position="fixed" class="wow fadeInUp" id="footer">' +
     '<div class="row center-xs">'+
-    '<div class="col-xs-12">'+
-    '<div data-role="panel" id="bottomsheetlist" class="ui-bottom-sheet ui-bottom-sheet-list" data-animate="false" data-position="bottom" data-display="overlay">'+
+    '<div class="col-xs-3">'+ // LANGUAGE UP
+
+    '</div>'+
+    '<div class="col-xs-3">'+ // ZOOM UP
+
+    '</div>'+
+    '<div class="col-xs-3">'+ // THEME UP
+    '<div id="bottomsheetlist" class="ui-bottom-sheet ui-bottom-sheet-list" data-animate="false" data-position="bottom" data-display="overlay">'+
     '<div class="row around-xs">'+
     '<div class="col-xs-auto">'+
     '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="fa fa-circle c1" aria-hidden="true"></i><strong>blue</strong></a>'+
@@ -112,7 +118,13 @@ document.write(
     '</div>'+
     '</div>'+
     '</div>'+
-    '</div>' + 
+    '</div>' +
+    '<div class="col-xs-3">'+ // FAVS UP
+
+    '</div>'+
+    '</div>' +
+
+    '<div class="row center-xs">'+ // LOWER MENU
     '<div class="col-xs-3">'+
     '<div class="box">'+
     '<a href="#" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i style="padding:2%;" class="fa fa-language" aria-hidden="true"></i>Language</a>'+
@@ -160,7 +172,7 @@ $(function(){
 
     // THEME FUNCTION 
     $(".theme").click(function(){
-        $("#bottomsheetlist").toggle();  
+        $("#bottomsheetlist").show().fadeIn("slow");
     });
     $(".c1").click(function(){
         $("#theme").attr("href", "css/nativedroid2.color.light-blue.css"); 
