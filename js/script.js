@@ -83,10 +83,10 @@ for(i=1; i<=maxLength; i++){
         '  </div>' +
         '  <div data-role="content">' +
         '    <div id="articleContent' + i + '" class="articleContent"></div>' +
-        '    <div id="controlgroup" data-role="controlgroup" class="clr-light-green" data-type="horizontal">' +
-        '      <a href="#article' + String(i-1) + '" data-role="button"  class="ui-btn ui-btn-inline clr-btn-light-green waves-effect waves-button waves-effect waves-button" data-icon="arrow-l"' +
+        '    <div id="controlgroup" data-role="controlgroup" data-type="horizontal">' +
+        '      <a href="#article' + String(i-1) + '" data-role="button"  class="ui-btn ui-btn-inline  waves-effect waves-button waves-effect waves-button" data-icon="arrow-l"' +
         '        data-inline="true" class="prevButton">Prev</a>' +
-        '      <a href="#article' + String(i+1) + '" data-role="button"  class="ui-btn ui-btn-inline clr-btn-light-green waves-effect waves-button waves-effect waves-button"' +
+        '      <a href="#article' + String(i+1) + '" data-role="button"  class="ui-btn ui-btn-inline  waves-effect waves-button waves-effect waves-button"' +
         '        data-inline="true" class="nextButton" data-iconpos="right">Next</a>' +
         '    </div>' +
         '  </div>' +
@@ -94,9 +94,25 @@ for(i=1; i<=maxLength; i++){
     );
 }
 
+
 document.write(
     '<div data-role="footer" data-position="fixed" class="wow fadeInUp" id="footer">' +
     '<div class="row center-xs">'+
+    '<div class="col-xs-12">'+
+    '<div data-role="panel" id="bottomsheetlist" class="ui-bottom-sheet ui-bottom-sheet-list" data-animate="false" data-position="bottom" data-display="overlay">'+
+    '<div class="row around-xs">'+
+    '<div class="col-xs-auto">'+
+    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="fa fa-circle c1" aria-hidden="true"></i><strong>blue</strong></a>'+
+    '</div>'+
+    '<div class="col-xs-auto bsheet">'+
+    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="fa fa-circle c2" aria-hidden="true"></i><strong>green</strong></a>'+
+    '</div>'+
+    '<div class="col-xs-auto">'+
+    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="fa fa-circle c3" aria-hidden="true"></i><strong>lime</strong></a>'+
+    '</div>'+
+    '</div>'+
+    '</div>'+
+    '</div>' + 
     '<div class="col-xs-3">'+
     '<div class="box">'+
     '<a href="#" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i style="padding:2%;" class="fa fa-language" aria-hidden="true"></i>Language</a>'+
@@ -109,7 +125,7 @@ document.write(
     '</div>'+
     '<div class="col-xs-3">'+
     '<div class="box theme">'+
-    '<a href="#bottomsheetlist" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i style="padding:2%;" class="fa fa-picture-o" aria-hidden="true"></i>Theme</a>'+
+    '<a href="#" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i style="padding:2%;" class="fa fa-picture-o" aria-hidden="true"></i>Theme</a>'+
     '</div>'+
     '</div>'+
     '<div class="col-xs-3">'+
@@ -121,24 +137,8 @@ document.write(
     '</div>'
 );
 
-document.write(
-    '<div data-role="panel" id="bottomsheetblock" class="ui-bottom-sheet ui-bottom-sheet-list" data-animate="false" data-position="bottom" data-display="overlay">'+
-    '<div class="row around-xs">'+
-    '<div class="col-xs-auto">'+
-    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="zmdi zmdi-assignment zmd-2x"></i><strong>Clipboard</strong></a>'+
-    '</div>'+
-    '<div class="col-xs-auto bsheet">'+
-    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="zmdi zmdi-fire zmd-2x"></i><strong>Hot Stuff</strong></a>'+
-    '</div>'+
-    '<div class="col-xs-auto">'+
-    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="zmdi zmdi-cloud-outline-alt zmd-2x"></i><strong>Cloud</strong></a>'+
-    '</div>'+
-    '<div class="col-xs-auto">'+
-    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="zmdi zmdi-format-color-fill zmd-2x"></i><strong>Fillcolor</strong></a>'+
-    '</div>'+
-    '</div>'+
-    '</div>'
-);
+
+
 
 /* DYNAMIC URL DEPENDING ON WHERE YOU'RE CLICKING ON THE FIRST PAGE */
 /* CLICK CONTENT APPEND ON THE PROCESSED URL */
@@ -148,13 +148,30 @@ $(function(){
         // TODO --> ADD CSS WLLH
         cat = ($(this).text());
         getOnlineFeed('http://feeds.thescoreesports.com/'+cat+'.rss');
+        $(this).css("color", "#f3f3f3");
     });
+    $("#list li a").click(function(){
+        $(this).css("color", "#f3f3f3");
+    })
     //  ZOOM FUNCTION
     $(".zoom").click(function(){
-       $("#zoomerElement li a, p").css("font-size", "150%");
+        $("#zoomerElement li a, p").css("font-size", "150%");
     });
-   
+
     // THEME FUNCTION 
+    $(".theme").click(function(){
+        $("#bottomsheetlist").toggle();  
+    });
+    $(".c1").click(function(){
+        $("#theme").attr("href", "css/nativedroid2.color.light-blue.css"); 
+    });
+
+    $(".c2").click(function(){
+        $("#theme").attr("href", "css/nativedroid2.color.light-green.css"); 
+    });
+    $(".c3").click(function(){
+        $("#theme").attr("href", "css/nativedroid2.color.lime.css"); 
+    });
 
 });
 

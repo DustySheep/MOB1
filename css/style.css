@@ -39,7 +39,29 @@ ul li a{
     padding:0;
 }
 #bottomsheetlist{
-    
+    display:none;
+    margin:2%;
+    margin-left:50%;
+    text-align:center;
 
+}
+.c1 {
+    color:lightblue;
+}
+.c2{
+    color:darkgreen;
+}
+.c3{
+    color:greenyellow;
+}
+.fa-circle{
+     padding:10px;
+}
+.ui-btn.clr-btn-light-green, .ui-btn.clr-btn-light-green:hover{
+    background-color:#bab7b7;
+}
+#controlgroup
 
+{
+    color:#bab7b7;
 }
