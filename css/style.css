@@ -24,8 +24,8 @@ ul li a{
     margin:0;
 }
 #footer{
-    margin-top:15%;
     position:fixed;
+    margin-top:15%;
     width:100%;
     bottom:0;
 }
@@ -38,12 +38,11 @@ ul li a{
 .col-xs-3{
     padding:0;
 }
-#bottomsheetlist{
+#bottomsheetlist, #langlist, #zoomlist,#favlist{
     display:none;
 
-    text-align:center;
-
 }
+
 .c1 {
     color:lightblue;
 }
@@ -53,7 +52,7 @@ ul li a{
 .c3{
     color:greenyellow;
 }
-.fa-circle{
+.fa-circle, .fa-search, .fa-search-plus, .fa-search-minus{
      padding:10px;
 }
 .ui-btn.clr-btn-light-green, .ui-btn.clr-btn-light-green:hover{
@@ -63,4 +62,13 @@ ul li a{
 
 {
     color:#bab7b7;
+}
+.ui-bottom-sheet-list .ui-bottom-sheet-link{
+    text-align: center;
+}
+.waves-button, .waves-button:hover, .waves-button:visited, .waves-button-input{
+    z-index:0;
+}
+.ui-bottom-sheet-list .ui-bottom-sheet-link{
+    background-color:#fff;
 }

@@ -99,10 +99,34 @@ document.write(
     '<div data-role="footer" data-position="fixed" class="wow fadeInUp" id="footer">' +
     '<div class="row center-xs">'+
     '<div class="col-xs-3">'+ // LANGUAGE UP
-
+    '<div id="langlist" class="ui-bottom-sheet ui-bottom-sheet-list" data-animate="false" data-position="bottom" data-display="overlay">'+
+    '<div class="row around-xs">'+
+    '<div class="col-xs-auto">'+
+    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="fa fa-circle" aria-hidden="true"></i><strong>french</strong></a>'+
+    '</div>'+
+    '<div class="col-xs-auto bsheet">'+
+    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="fa fa-circle" aria-hidden="true"></i><strong>English</strong></a>'+
+    '</div>'+
+    '<div class="col-xs-auto">'+
+    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="fa fa-circle" aria-hidden="true"></i><strong>german</strong></a>'+
+    '</div>'+
+    '</div>'+
+    '</div>'+
     '</div>'+
     '<div class="col-xs-3">'+ // ZOOM UP
-
+    '<div id="zoomlist" class="ui-bottom-sheet ui-bottom-sheet-list" data-animate="false" data-position="bottom" data-display="overlay">'+
+    '<div class="row around-xs">'+
+    '<div class="col-xs-auto">'+
+    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" id="zoomIn" data-ajax="false"><i class="fa fa-search-plus" aria-hidden="true"></i><strong>Zoom in</strong></a>'+
+    '</div>'+
+    '<div class="col-xs-auto bsheet">'+
+    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" id="zoomOut" data-ajax="false"><i class="fa fa-search-minus" aria-hidden="true"></i><strong>Zoom out</strong></a>'+
+    '</div>'+
+    '<div class="col-xs-auto">'+
+    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" id="resetZoom" data-ajax="false"><i class="fa fa-search" aria-hidden="true"></i><strong>reset</strong></a>'+
+    '</div>'+
+    '</div>'+
+    '</div>'+
     '</div>'+
     '<div class="col-xs-3">'+ // THEME UP
     '<div id="bottomsheetlist" class="ui-bottom-sheet ui-bottom-sheet-list" data-animate="false" data-position="bottom" data-display="overlay">'+
@@ -120,14 +144,20 @@ document.write(
     '</div>'+
     '</div>' +
     '<div class="col-xs-3">'+ // FAVS UP
-
+    '<div id="favlist"  data-animate="false" data-position="bottom" >'+
+    '<div class="row around-xs">'+
+    '<div class="col-xs-auto">'+
+    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" id="addFav" data-ajax="false"><i class="fa fa-plus" aria-hidden="true"></i><strong>Add to favorites</strong></a>'+
+    '</div>'+
+    '</div>'+
+    '</div>'+
     '</div>'+
     '</div>' +
 
     '<div class="row center-xs">'+ // LOWER MENU
     '<div class="col-xs-3">'+
     '<div class="box">'+
-    '<a href="#" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i style="padding:2%;" class="fa fa-language" aria-hidden="true"></i>Language</a>'+
+    '<a href="#" id="lang" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i style="padding:2%;" class="fa fa-language" aria-hidden="true"></i>Language</a>'+
     '</div>'+
     '</div>'+
     '<div class="col-xs-3">'+
@@ -141,7 +171,7 @@ document.write(
     '</div>'+
     '</div>'+
     '<div class="col-xs-3">'+
-    '<div class="box">'+
+    '<div class="box fav">'+
     '<a href="#" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i style="padding:2%;" class="fa fa-star" aria-hidden="true"></i>Favs</a>'+
     '</div>'+
     '</div>'+
@@ -163,16 +193,34 @@ $(function(){
         $(this).css("color", "#f3f3f3");
     });
     $("#list li a").click(function(){
-        $(this).css("color", "#f3f3f3");
+        $(this).css("color", "#d6d3d3");
     })
+
+    // LANG FUNCTION
+    $("#lang").click(function(){
+        $("#langlist").fadeToggle("slow"); 
+    });
+
     //  ZOOM FUNCTION
     $(".zoom").click(function(){
+        $("#zoomlist").fadeToggle("slow");
+    });
+
+    $("#zoomIn").click(function(){
         $("#zoomerElement li a, p").css("font-size", "150%");
     });
+    $("#zoomOut").click(function(){
+        $("#zoomerElement li a, p").css("font-size", "70%");
+    });
+
+    $("#resetZoom").click(function(){
+        $("#zoomerElement li a, p").css("font-size", "100%");
+    });
+    
 
     // THEME FUNCTION 
     $(".theme").click(function(){
-        $("#bottomsheetlist").show().fadeIn("slow");
+        $("#bottomsheetlist").fadeToggle("slow");
     });
     $(".c1").click(function(){
         $("#theme").attr("href", "css/nativedroid2.color.light-blue.css"); 
@@ -183,6 +231,11 @@ $(function(){
     });
     $(".c3").click(function(){
         $("#theme").attr("href", "css/nativedroid2.color.lime.css"); 
+    });
+    
+    // Favs
+    $(".fav").click(function(){
+          $("#favlist").fadeToggle("slow");
     });
 
 });
