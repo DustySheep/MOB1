@@ -1,22 +1,180 @@
-<!DOCTYPE html> 
-<html> 
-    <head> 
-        <title>MOB1 - Epreuve</title> 
-        <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8"> 
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MOB1 - Epreuve</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
         <link rel="stylesheet" href="vendor/waves/waves.min.css">
-        <link rel="stylesheet" href="vendor/wow/animate.css" />
-        <link rel="stylesheet" href="css/nativedroid2.css" />
+        <link rel="stylesheet" href="vendor/wow/animate.css"/>
+        <link rel="stylesheet" href="css/nativedroid2.css"/>
         <link rel="stylesheet" href="css/flexboxgrid.min.css">
         <link rel="stylesheet" href="css/style.css">
-        <link id ="theme" rel="stylesheet" href="css/nativedroid2.color.light-green.css">
+        <link id="theme" rel="stylesheet" href="css/nativedroid2.color.light-green.css">
 
 
-    </head> 
-    <body id="zoomerElement"class="clr-accent-light-green"> 
+    </head>
+    <body id="zoomerElement" class="clr-accent-light-green">
+        <div data-role="page" id="home">
+            <div data-role="header" class="wow clr-light-green fadeInDown">
+                <h1>MOB1</h1>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview" data-autodivider="true" data-inset="true" data-theme="a">
+                    <li data-role="list-divider"><span> Choose a category</span>
+                    </li>
+                    <li>
+                        <img src="img/LoL_icon.png" alt="LoL" class="ui-thumbnail ui-thumbnail-circular"/>
+                        <a href="#list" data-rel="list">lol</a>
+                    </li>
+                    <li>
+                        <img src="img/dota_2_icon_by_benashvili-d6w0695.png" alt="dota2"
+                             class="ui-thumbnail ui-thumbnail-circular"/>
+                        <a href="#list">dota2</a>
+                    </li>
+                    <li>
+                        <img src="img/csgo-logo.png" alt="csgo" class="ui-thumbnail ui-thumbnail-circular"/>
+                        <a href="#list">csgo</a>
+                    </li>
+                    <li>
+                        <img src="img/hots.png" alt="hots" class="ui-thumbnail ui-thumbnail-circular"/>
+                        <a href="#list">hots</a>
+                    </li>
+                    <li>
+                        <img src="img/hs_icon.png" alt="hs" class="ui-thumbnail ui-thumbnail-circular"/>
+                        <a href="#list">hearthstone</a>
+                    </li>
+                    <li>
+                        <img src="img/starcraft-ii-icon.png" alt="sc2" class="ui-thumbnail ui-thumbnail-circular"/>
+                        <a href="#list">sc2</a>
+                    </li>
+                    <li>
+                        <img src="img/3xhumed-Mega-Games-Pack-33-Call-of-Duty-Modern-Warfare-2-8.ico" alt="cod+"
+                             class="ui-thumbnail ui-thumbnail-circular"/>
+                        <a href="#list">cod</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="page" id="list">
+            <div data-role="header" data-position="inline" class="wow fadeInDown">
+                <a href="#home" data-role="button" data-icon="home"></a>
 
+                <h1><span>TheScore Esport RSS Reader </span>
+                    <span style="font-size: x-small"></span></h1>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview" data-inset="true" data-filter="true" data-theme="a" id="articleList">
+                </ul>
+            </div>
+        </div>
+
+        <div data-role="footer" data-position="fixed" class="wow fadeInUp container" id="footer">
+            <div class="row">
+                <div class="col-xs-3">
+                    <div id="langlist" class="ui-bottom-sheet ui-bottom-sheet-list" data-animate="false" data-position="bottom"
+                         data-display="overlay">
+                        <div class="row around-xs">
+                            <div class="col-xs-auto">
+                                <a href="#"
+                                   class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button"
+                                   data-ajax="false"><strong>Not available for this RSS feed</strong></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div id="zoomlist" class="ui-bottom-sheet ui-bottom-sheet-list" data-animate="false" data-position="bottom"
+                         data-display="overlay">
+                        <div class="row around-xs">
+                            <div class="col-xs-auto">
+                                <a href="#"
+                                   class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button"
+                                   id="zoomIn" data-ajax="false"><i class="fa fa-search-plus" aria-hidden="true"></i><strong>aged
+                                    eyesight </strong></a>
+                            </div>
+                            <div class="col-xs-auto bsheet">
+                                <a href="#"
+                                   class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button"
+                                   id="zoomOut" data-ajax="false"><i class="fa fa-search-minus" aria-hidden="true"></i><strong>unreadable</strong></a>
+                            </div>
+                            <div class="col-xs-auto">
+                                <a href="#"
+                                   class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button"
+                                   id="resetZoom" data-ajax="false"><i class="fa fa-search"
+                                                                       aria-hidden="true"></i><strong>reset</strong></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div id="bottomsheetlist" class="ui-bottom-sheet ui-bottom-sheet-list" data-animate="false"
+                         data-position="bottom" data-display="overlay">
+                        <div class="row around-xs">
+                            <div class="col-xs-auto">
+                                <a href="#"
+                                   class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect blue waves-button waves-effect waves-button"
+                                   data-ajax="false"><i class="fa fa-circle c1" aria-hidden="true"></i><strong>blue</strong></a>
+                            </div>
+                            <div class="col-xs-auto bsheet">
+                                <a href="#"
+                                   class="ui-bottom-sheet-link ui-btn ui-btn-inline green waves-effect waves-button waves-effect waves-button"
+                                   data-ajax="false"><i class="fa fa-circle c2"
+                                                        aria-hidden="true"></i><strong>green</strong></a>
+                            </div>
+                            <div class="col-xs-auto">
+                                <a href="#"
+                                   class="ui-bottom-sheet-link ui-btn ui-btn-inline lime waves-effect waves-button waves-effect waves-button"
+                                   data-ajax="false"><i class="fa fa-circle c3" aria-hidden="true"></i><strong>lime</strong></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div id="favlist" data-animate="false" data-position="bottom">
+                        <div class="row around-xs">
+                            <div class="col-xs-auto">
+                                <a href="#"
+                                   class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button"
+                                   id="addFav" data-ajax="false"><i class="fa fa-plus" aria-hidden="true"></i><strong>Add to
+                                    favorites</strong></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row center-xs">
+                <div class="col-xs-3">
+                    <div class="box">
+                        <a href="#" id="lang" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i
+                                                                                                               style="padding:2%;" class="fa fa-language" aria-hidden="true"></i>Language</a>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="box zoom">
+                        <a href="#" id="animateZoomControl" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i
+                                                                                                                             style="padding:2%;" class="fa fa-search-plus" aria-hidden="true"></i>Zoom</a>
+                    </div>
+                </div>
+
+                <div class="col-xs-3">
+                    <div class="box theme">
+                        <a href="#" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i style="padding:2%;"
+                                                                                                     class="fa fa-picture-o"
+                                                                                                     aria-hidden="true"></i>Theme</a>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="box fav">
+                        <a href="#" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i style="padding:2%;"
+                                                                                                     class="fa fa-star"
+                                                                                                     aria-hidden="true"></i>Favs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>

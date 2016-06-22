@@ -1,78 +1,26 @@
 var maxLength = 20;
 
-/* WRITING THE FIRST PAGE *------------------------------------------------------------------------------*/
-
-document.write(
-    ' <div data-role="page" id="home">' +
-    '    <div data-role="header" class="wow clr-light-green fadeInDown">' +
-    '        <h1>MOB1</h1>' +
-    '    </div>' +
-    '    <div data-role="content" >' +	
-    '        <ul data-role="listview" data-autodivider="true" data-inset="true" data-theme="a">' +
-    '            <li data-role="list-divider"><span> Choose a category</span> ' +
-    '            </li>' +
-    '            <li>' +
-    '                <img src="img/LoL_icon.png" alt="LoL" class="ui-thumbnail ui-thumbnail-circular"/>' +
-    '                <a href="#list" data-rel="list">lol</a>' +
-    '            </li>' +
-    '            <li>' +
-    '                <img src="img/dota_2_icon_by_benashvili-d6w0695.png" alt="dota2"class="ui-thumbnail ui-thumbnail-circular"/>' +
-    '                <a href="#list">dota2</a>' +
-    '            </li>' +
-    '            <li>' +
-    '                <img src="img/csgo-logo.png" alt="csgo"class="ui-thumbnail ui-thumbnail-circular"/>' +
-    '                <a href="#list">csgo</a>' +
-    '            </li>' +
-    '            <li>' +
-    '                <img src="img/hots.png" alt="hots" class="ui-thumbnail ui-thumbnail-circular"/>' +
-    '                <a href="#list">hots</a>' +
-    '            </li>' +
-    '            <li>' +
-    '                <img src="img/hs_icon.png" alt="hs" class="ui-thumbnail ui-thumbnail-circular"/>' +
-    '                <a href="#list">hearthstone</a>' +
-    '            </li>' +
-    '            <li>' +
-    '                <img src="img/starcraft-ii-icon.png" alt="sc2" class="ui-thumbnail ui-thumbnail-circular"/>' +
-    '                <a href="#list">sc2</a>' +
-    '            </li>' +
-    '            <li>' +
-    '                <img src="img/3xhumed-Mega-Games-Pack-33-Call-of-Duty-Modern-Warfare-2-8.ico" alt="cod+" class="ui-thumbnail ui-thumbnail-circular"/>' +
-    '                <a href="#list">cod</a>' +
-    '            </li>' +
-    '        </ul>' +
-    '    </div>' +
-    '</div>'
-);
-
-/* WRITING THE SECOND (DYNAMIC) PAGE *-----------------------------------------------------------------------*/
-
-document.write(
-    '<div data-role="page" id="list">' +
-    '  <div data-role="header" data-position="inline" class="wow fadeInDown">' +
-    '    <a href="#home" data-role="button" data-icon="home"></a>' +
-    '    <h1><span>TheScore Esport RSS Reader </span> ' +
-    '      <span style="font-size: x-small"></span></h1>' +
-    '  </div>' +
-    '  <div data-role="content">' +
-    '    <ul data-role="listview" data-inset="true" data-filter="true" data-theme="a" id="articleList">'
-);
-
 /* WRITE ARTICLES LINKS UNTIL MAXLENGTH IS ACHIEVED------------------------------------------------------------------*/
+/* FUNCTION TO WRITE THE LIST OF ARTICLES */
+/* APPEND TO THE LIST PAGE*/
 
-for(var i=1; i<=maxLength; i++){
-    document.write(
-        '<li id="list' + i + '"><a href="#article' + i + '" id="link' + i + '">&nbsp;</a></li>'
-    );
+function returnFullList() {
+    var fullList = "";
+    for (var i = 1; i <= maxLength; i++) {
+        var listItem = '<li id="list' + i + '"><a href="#article' + i + '" id="link' + i + '">&nbsp;</a></li>';
+        $("#articleList").append(listItem);
+    }
 }
-document.write(
-    '    </ul>' +
-    '  </div>' +
-    '</div>'
-);
+fullList = window.returnFullList();
+
+
+
+
+
 
 /* WRITE ARTICLES UNTIL MAXLENGTH IS ACHIEVED------------------------------------------------------------------*/
 
-for(i=1; i<=maxLength; i++){
+for (i = 1; i <= maxLength; i++) {
     document.write(
         '<div data-role="page" id="article' + i + '">' +
         '  <div data-role="header" data-position="inline" class="wow fadeInDown">' +
@@ -80,13 +28,15 @@ for(i=1; i<=maxLength; i++){
         '    <h1 id="articleHeader' + i + '">&nbsp;</h1>' +
         '    <a href="#" id="openButton' + i + '" data-role="button" data-theme="a" data-icon="search"' +
         '      class="ui-btn-right" rel="external"></a>' +
+        '    <a href="#" id="openButton' + i + '" data-role="button" data-theme="a" data-icon="search"' +
+        '      class="ui-btn-right" rel="external"></a>' +
         '  </div>' +
         '  <div data-role="content">' +
         '    <div id="articleContent' + i + '" class="articleContent"></div>' +
         '    <div id="controlgroup" data-role="controlgroup" data-type="horizontal">' +
-        '      <a href="#article' + String(i-1) + '" data-role="button"  class="ui-btn ui-btn-inline  waves-effect waves-button waves-effect waves-button" data-icon="arrow-l"' +
+        '      <a href="#article' + String(i - 1) + '" data-role="button"  class="ui-btn ui-btn-inline  waves-effect waves-button waves-effect waves-button" data-icon="arrow-l"' +
         '        data-inline="true" class="prevButton">Prev</a>' +
-        '      <a href="#article' + String(i+1) + '" data-role="button"  class="ui-btn ui-btn-inline  waves-effect waves-button waves-effect waves-button"' +
+        '      <a href="#article' + String(i + 1) + '" data-role="button"  class="ui-btn ui-btn-inline  waves-effect waves-button waves-effect waves-button"' +
         '        data-inline="true" class="nextButton" data-iconpos="right">Next</a>' +
         '    </div>' +
         '  </div>' +
@@ -94,169 +44,97 @@ for(i=1; i<=maxLength; i++){
     );
 }
 
-
-document.write(
-    '<div data-role="footer" data-position="fixed" class="wow fadeInUp" id="footer">' +
-    '<div class="row center-xs">'+
-    '<div class="col-xs-3">'+ // LANGUAGE UP
-    '<div id="langlist" class="ui-bottom-sheet ui-bottom-sheet-list" data-animate="false" data-position="bottom" data-display="overlay">'+
-    '<div class="row around-xs">'+
-    '<div class="col-xs-auto">'+
-    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="fa fa-circle" aria-hidden="true"></i><strong>french</strong></a>'+
-    '</div>'+
-    '<div class="col-xs-auto bsheet">'+
-    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="fa fa-circle" aria-hidden="true"></i><strong>English</strong></a>'+
-    '</div>'+
-    '<div class="col-xs-auto">'+
-    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="fa fa-circle" aria-hidden="true"></i><strong>german</strong></a>'+
-    '</div>'+
-    '</div>'+
-    '</div>'+
-    '</div>'+
-    '<div class="col-xs-3">'+ // ZOOM UP
-    '<div id="zoomlist" class="ui-bottom-sheet ui-bottom-sheet-list" data-animate="false" data-position="bottom" data-display="overlay">'+
-    '<div class="row around-xs">'+
-    '<div class="col-xs-auto">'+
-    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" id="zoomIn" data-ajax="false"><i class="fa fa-search-plus" aria-hidden="true"></i><strong>Zoom in</strong></a>'+
-    '</div>'+
-    '<div class="col-xs-auto bsheet">'+
-    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" id="zoomOut" data-ajax="false"><i class="fa fa-search-minus" aria-hidden="true"></i><strong>Zoom out</strong></a>'+
-    '</div>'+
-    '<div class="col-xs-auto">'+
-    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" id="resetZoom" data-ajax="false"><i class="fa fa-search" aria-hidden="true"></i><strong>reset</strong></a>'+
-    '</div>'+
-    '</div>'+
-    '</div>'+
-    '</div>'+
-    '<div class="col-xs-3">'+ // THEME UP
-    '<div id="bottomsheetlist" class="ui-bottom-sheet ui-bottom-sheet-list" data-animate="false" data-position="bottom" data-display="overlay">'+
-    '<div class="row around-xs">'+
-    '<div class="col-xs-auto">'+
-    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="fa fa-circle c1" aria-hidden="true"></i><strong>blue</strong></a>'+
-    '</div>'+
-    '<div class="col-xs-auto bsheet">'+
-    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="fa fa-circle c2" aria-hidden="true"></i><strong>green</strong></a>'+
-    '</div>'+
-    '<div class="col-xs-auto">'+
-    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-ajax="false"><i class="fa fa-circle c3" aria-hidden="true"></i><strong>lime</strong></a>'+
-    '</div>'+
-    '</div>'+
-    '</div>'+
-    '</div>' +
-    '<div class="col-xs-3">'+ // FAVS UP
-    '<div id="favlist"  data-animate="false" data-position="bottom" >'+
-    '<div class="row around-xs">'+
-    '<div class="col-xs-auto">'+
-    '<a href="#" class="ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" id="addFav" data-ajax="false"><i class="fa fa-plus" aria-hidden="true"></i><strong>Add to favorites</strong></a>'+
-    '</div>'+
-    '</div>'+
-    '</div>'+
-    '</div>'+
-    '</div>' +
-
-    '<div class="row center-xs">'+ // LOWER MENU
-    '<div class="col-xs-3">'+
-    '<div class="box">'+
-    '<a href="#" id="lang" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i style="padding:2%;" class="fa fa-language" aria-hidden="true"></i>Language</a>'+
-    '</div>'+
-    '</div>'+
-    '<div class="col-xs-3">'+
-    '<div class="box zoom">'+
-    '<a href="#" id="animateZoomControl" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i style="padding:2%;" class="fa fa-search-plus" aria-hidden="true"></i>Zoom</a>'+
-    '</div>'+
-    '</div>'+
-    '<div class="col-xs-3">'+
-    '<div class="box theme">'+
-    '<a href="#" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i style="padding:2%;" class="fa fa-picture-o" aria-hidden="true"></i>Theme</a>'+
-    '</div>'+
-    '</div>'+
-    '<div class="col-xs-3">'+
-    '<div class="box fav">'+
-    '<a href="#" class="clr-btn-light-green ui-btn ui-mini nd2-btn-icon-block"><i style="padding:2%;" class="fa fa-star" aria-hidden="true"></i>Favs</a>'+
-    '</div>'+
-    '</div>'+
-    '</div>'+
-    '</div>'
-);
-
-
-
-
+/* FAVOURITES ARRAY */
+function favArray(){
+    var favArray = [];
+    for (i = 1; i <= maxLength; i++) {
+        $("#addFav").click(function () {
+            $("#article' + i + '").push(favArray);
+        });
+    }
+    console.log(favArray);
+}
+/*favend*/
+favArray = window.favArray();
 /* DYNAMIC URL DEPENDING ON WHERE YOU'RE CLICKING ON THE FIRST PAGE */
 /* CLICK CONTENT APPEND ON THE PROCESSED URL */
-$(function(){
-    var cat ="";
-    $("#home li a").click(function(){
+$(function () {
+    var cat = "";
+    $("#home li a").click(function () {
         // TODO --> ADD CSS WLLH
         cat = ($(this).text());
-        getOnlineFeed('http://feeds.thescoreesports.com/'+cat+'.rss');
+        getOnlineFeed('http://feeds.thescoreesports.com/' + cat + '.rss');
         $(this).css("color", "#f3f3f3");
     });
-    $("#list li a").click(function(){
+    $("#list li a").click(function () {
         $(this).css("color", "#d6d3d3");
-    })
+    });
 
     // LANG FUNCTION
-    $("#lang").click(function(){
-        $("#langlist").fadeToggle("slow"); 
+    $("#lang").click(function () {
+        $("#langlist").fadeToggle("slow");
     });
 
     //  ZOOM FUNCTION
-    $(".zoom").click(function(){
+    $(".zoom").click(function () {
         $("#zoomlist").fadeToggle("slow");
     });
 
-    $("#zoomIn").click(function(){
+    $("#zoomIn").click(function () {
         $("#zoomerElement li a, p").css("font-size", "150%");
     });
-    $("#zoomOut").click(function(){
+    $("#zoomOut").click(function () {
         $("#zoomerElement li a, p").css("font-size", "70%");
     });
 
-    $("#resetZoom").click(function(){
+    $("#resetZoom").click(function () {
         $("#zoomerElement li a, p").css("font-size", "100%");
     });
-    
+
 
     // THEME FUNCTION 
-    $(".theme").click(function(){
+    $(".theme").click(function () {
         $("#bottomsheetlist").fadeToggle("slow");
     });
-    $(".c1").click(function(){
-        $("#theme").attr("href", "css/nativedroid2.color.light-blue.css"); 
+    $(".blue").click(function () {
+        $("#theme").attr("href", "css/nativedroid2.color.light-blue.css");
     });
 
-    $(".c2").click(function(){
-        $("#theme").attr("href", "css/nativedroid2.color.light-green.css"); 
+    $(".green").click(function () {
+        $("#theme").attr("href", "css/nativedroid2.color.light-green.css");
     });
-    $(".c3").click(function(){
-        $("#theme").attr("href", "css/nativedroid2.color.lime.css"); 
+    $(".lime").click(function () {
+        $("#theme").attr("href", "css/nativedroid2.color.lime.css");
     });
-    
+
     // Favs
-    $(".fav").click(function(){
-          $("#favlist").fadeToggle("slow");
+    $(".fav").click(function () {
+        $("#favlist").fadeToggle("slow");
     });
 
 });
 
 /* functions */
-var listEntries = function(json) {
+var listEntries = function (json) {
 
     if (!json.responseData.feed.entries) return false;
     $('#widgetTitle').text(json.responseData.feed.title);
-    var articleLength =json.responseData.feed.entries.length;
+    var articleLength = json.responseData.feed.entries.length;
 
     articleLength = (articleLength > maxLength) ? maxLength : articleLength;
-    for (var i = 1; i <= articleLength ; i++) {
+    for (var i = 1; i <= articleLength; i++) {
 
         /* FOR EACH ARTICLES THERE IS */
-        var entry = json.responseData.feed.entries[i-1];
+        var entry = json.responseData.feed.entries[i - 1];
 
-        /* A LINK TO IT */          $('#link' + i).text(entry.title);
-        /* A HEADER TO DISPLAY */   $('#articleHeader' + i).text(entry.title);
-        /* A LINK TO IT */          $('#openButton' + i).attr('href', entry.link);
-        /* THE ARTICLE'S CONTENT */ $('#articleContent' + i).append(entry.content);
+        /* A LINK TO IT */
+        $('#link' + i).text(entry.title);
+        /* A HEADER TO DISPLAY */
+        $('#articleHeader' + i).text(entry.title);
+        /* A LINK TO IT */
+        $('#openButton' + i).attr('href', entry.link);
+        /* THE ARTICLE'S CONTENT */
+        $('#articleContent' + i).append(entry.content);
 
     }
 
@@ -278,9 +156,8 @@ var listEntries = function(json) {
 };
 
 
-
 /* PROCESSSING OF THE URL */
-var getOnlineFeed = function(url) {
+var getOnlineFeed = function (url) {
     var script = document.createElement('script');
     script.setAttribute('src', 'http://ajax.googleapis.com/ajax/services/feed/load?callback=listEntries&hl=ja&output=json-in-script&q='
                         + encodeURIComponent(url)
